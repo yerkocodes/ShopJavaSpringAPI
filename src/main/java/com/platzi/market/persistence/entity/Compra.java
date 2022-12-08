@@ -40,7 +40,7 @@ public class Compra {
 	@JoinColumn(name = "id_cliente", insertable = false, updatable = false) // "id_cliente" >>> nombre de la columna identificadora de la entidad Cliente
 	private Cliente cliente;
 	
-	@OneToMany(mappedBy = "producto")
+	@OneToMany(mappedBy = "idProducto") //producto
 	private List<ComprasProducto> productos;
 	// -----------------------------------------------------------------------------
 

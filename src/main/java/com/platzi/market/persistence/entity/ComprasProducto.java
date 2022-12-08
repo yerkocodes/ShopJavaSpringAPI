@@ -1,17 +1,28 @@
 package com.platzi.market.persistence.entity;
 
-import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "compras_productos")
+@IdClass(ComprasProductoPK.class)
 public class ComprasProducto {
 
-	@EmbeddedId
-	private ComprasProductoPK id; // Clave primaria compuesta creada en una clase independiente "ComprasProductoPK"
+//	@EmbeddedId
+//	private ComprasProductoPK id; // Clave primaria compuesta creada en una clase independiente "ComprasProductoPK"
+	
+	@Id
+	@Column(name = "id_compra")
+	private Integer idCompra;
+
+	@Id
+	@Column(name = "id_producto")
+	private Integer idProducto;
 	
 	private Integer cantidad;
 	
@@ -29,12 +40,20 @@ public class ComprasProducto {
 	private Producto producto;
 	// -----------------------------------------------------------------------------
 
-	public ComprasProductoPK getId() {
-		return id;
+	public Integer getIdCompra() {
+		return idCompra;
 	}
 
-	public void setId(ComprasProductoPK id) {
-		this.id = id;
+	public void setIdCompra(Integer idCompra) {
+		this.idCompra = idCompra;
+	}
+
+	public Integer getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(Integer idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public Integer getCantidad() {
@@ -77,7 +96,4 @@ public class ComprasProducto {
 		this.producto = producto;
 	}
 
-//	Getters and Setters
-	
-	
 }
